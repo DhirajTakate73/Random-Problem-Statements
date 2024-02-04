@@ -1,31 +1,31 @@
-int EvenFactorial(int ino) {
-    int icnt = 0;
-    int evenFactorCount = 0;  // Initialize a count for even factors
+#include<stdio.h>
 
-    if (ino < 0) {
-        ino = -ino;
-    }
+int SmallCapitalDiff(char str[]) {
+    int icapitalcnt = 0;
+    int ismallcnt = 0;
 
-    for (icnt = 1; icnt <= ino; icnt++) {
-        if (ino % icnt == 0 && icnt % 2 == 0) {
-            printf("%d\n", icnt);
-            evenFactorCount++;
+    while (*str != '\0') {
+        if ((*str >= 'a') && (*str <= 'z')) {
+            ismallcnt++;
+            str++;
+        } else if ((*str >= 'A') && (*str <= 'Z')) {
+            icapitalcnt++;
+            str++;
         }
     }
-
-    return evenFactorCount;  // Return the count of even factors
+    return ismallcnt - icapitalcnt;
 }
 
 int main() {
-    int ivalue = 0;
+    char arr[40];
     int iret = 0;
 
-    printf("Please enter a number: ");
-    scanf("%d", &ivalue);
+    printf("Enter the string: ");
+    scanf(" %[^\n]", arr);
 
-    iret = EvenFactorial(ivalue);
+    iret = SmallCapitalDiff(arr);
 
-    printf("The count of even factors of the entered number is: %d", iret);
+    printf("Difference between count of Capital and Count of Small Characters in the entered string is: %d", iret);
 
     return 0;
 }
